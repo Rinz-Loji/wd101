@@ -12,21 +12,22 @@ const retrieveentries = () => {
   let tr = Entries.map((row, index) => {
     /* Each elemnt inside an array has to be between <th> and </th> */
     th = row.map((col) => {
-      if (index === 0) {
-        return '<th class="border border-blue-400 px-6 py-1">' + col + "</th>";
-      } else {
-        return '<td class="border border-blue-400 px-6 py-1">' + col + "</td>";
-      }
+      return '<td class="border border-blue-400 px-6 py-1">' + col + "</td>";
     });
     return "<tr>" + th.join("\n") + "</tr>";
   });
   document.getElementById("table").innerHTML = tr.join("\n");
 };
 
-let entries = [
-  ["Name", "Email", "Password", "DOB", "Accepted terms?"],
-];
-localStorage.setItem("Entries", JSON.stringify(entries));
+if (localStorage.getItem("Entries") === null) {
+  /* Adding an empty array to local storage */
+  entries = [];
+  localStorage.setItem("Entries", JSON.stringify([]));
+} else {
+  entries = JSON.parse(localStorage.getItem("Entries"));
+  retrieveentries();
+}
+
 retrieveentries();
 
 function age(date) {
@@ -69,7 +70,7 @@ function Maxage(date) {
   const day = String(today.getDate()).padStart(2, "0");
   const max = [year, month, day];
   let x = date.split("-");
-  max[0] = year - 60;
+  max[0] = year - 55;
   return max.join("/");
 }
 function validate(date) {
@@ -78,7 +79,7 @@ function validate(date) {
       `Value must be ${Minage(date)} or before of the format YYYY/MM/DD`
     );
     DOB.reportValidity();
-  } else if (age(date) > 60) {
+  } else if (age(date) > 55) {
     DOB.setCustomValidity(
       `Value must be ${Maxage(date)} or after of the format YYYY/MM/DD`
     );
