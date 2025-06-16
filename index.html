@@ -5,6 +5,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <meta charset="UTF-8">
     <title>Registration Page</title>
+    <style href="style.css" rel="stylesheet">
+    </style>
 </head>
 
 <body>
@@ -30,10 +32,20 @@
             </form>
 
             <h1 class="text-3xl font-black mb-4 text-center">Entered Users</h1>
-            <table id="table" class="table-auto w-full border border-gray-300 border-collapse">
+            <table class="table-auto w-full border border-gray-300 border-collapse">
+                <thead>
+                    <tr>
+                        <th class="border border-blue-400 px-6 py-1">Name</th>
+                        <th class="border border-blue-400 px-6 py-1">Email</th>
+                        <th class="border border-blue-400 px-6 py-1">Password</th>
+                        <th class="border border-blue-400 px-6 py-1">DOB</th>
+                        <th class="border border-blue-400 px-6 py-1">Accepted terms?</th>
+                    </tr>
+                </thead>
+                <tbody id="table"></tbody>
             </table>
         </div>
-        <script src="index.js">
+        <script src="reg.js">
         </script>
     </div>
 </body>
