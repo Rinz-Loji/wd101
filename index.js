@@ -1,6 +1,6 @@
 let form = document.getElementById("user-form");
 let submit = document.getElementById("submit");
-let DOB = document.getElementById("DOB");
+let DOB = document.getElementById("dob");
 
 /* Function for showing the table on the user page form local storage */
 const retrieveentries = () => {
@@ -96,7 +96,7 @@ form.addEventListener("submit", function (event) {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const terms = document.getElementById("terms").checked;
+  const terms = document.getElementById("acceptterms").checked;
   /* Putting all elements in an array and pushing into the entries array */
   console.log(age(DOB.value));
   let arr = [name, email, password, DOB.value, terms];
